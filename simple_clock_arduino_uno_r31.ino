@@ -25,7 +25,8 @@
       show_triggers View all events
           Example: show_triggers
       save          Save all records to EEPROM
-          Example: save         
+          Example: save      
+		  
 */
 
 String setting = "";
