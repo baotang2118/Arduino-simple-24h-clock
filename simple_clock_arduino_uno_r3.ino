@@ -36,16 +36,6 @@ unsigned long _millis = millis();
 unsigned long local_millis = _millis;
 int eeAddress = 0;
 
-void setup()
-{
-  Serial.begin(115200);
-  while (!Serial) {
-    ; // wait for serial port to connect.
-  }
-  Serial.println( "loading triggers from eeprom ..." );
-  EEPROM.get( eeAddress, triggers );
-}
-
 void help()
 {
   Serial.println("This is simple 24h clock base on watchdog timer and supports up to 10 events.");
@@ -70,6 +60,7 @@ void help()
   Serial.flush();
 }
 
+
 bool isNumberic(String input)
 {
   String numberic = "0123456789";
@@ -83,6 +74,7 @@ bool isNumberic(String input)
   }
   return true;
 }
+
 
 unsigned long str_processing()
 {
@@ -98,6 +90,18 @@ unsigned long str_processing()
   time_m = stime_m.toInt();
   return (time_h*3600UL + time_m*60UL);
 }
+
+
+void setup()
+{
+  Serial.begin(115200);
+  while (!Serial) {
+    ; // wait for serial port to connect.
+  }
+  Serial.println( "loading triggers from eeprom ..." );
+  EEPROM.get( eeAddress, triggers );
+}
+
 
 void serialEvent() {
   setting = Serial.readString();
@@ -171,12 +175,49 @@ void serialEvent() {
   return;
 }
 
+
 void loop()
 {
   for (int i = 0; i < 10; i++) {
-    if (triggers[i] == seconds and triggers[i] != 0){
-        // do sth here
-    }
+	if (triggers[i] == 0) 
+		continue;
+    else 
+		if (triggers[i] == seconds){
+            switch(i){
+                case 0:
+				    // do sth here
+                    break;
+				case 1:
+				    // do sth here
+                    break;
+				case 2:
+				    // do sth here
+                    break;
+				case 3:
+				    // do sth here
+                    break;
+				case 4:
+				    // do sth here
+                    break;
+				case 5:
+				    // do sth here
+                    break;
+				case 6:
+				    // do sth here
+                    break;
+				case 7:
+				    // do sth here
+                    break;
+				case 8:
+				    // do sth here
+                    break;
+				case 9:
+				    // do sth here
+                    break;
+				default:
+					break;
+		    }
+        }
   } 
   
   _millis = millis();
