@@ -36,6 +36,7 @@ unsigned long _millis = millis();
 unsigned long local_millis = _millis;
 int eeAddress = 0;
 
+
 void help()
 {
   Serial.println("This is simple 24h clock base on watchdog timer and supports up to 10 events.");
@@ -100,6 +101,7 @@ void setup()
   }
   Serial.println( "loading triggers from eeprom ..." );
   EEPROM.get( eeAddress, triggers );
+  pinMode(LED_BUILTIN, OUTPUT);
 }
 
 
@@ -186,9 +188,11 @@ void loop()
             switch(i){
                 case 0:
 				    // do sth here
+					digitalWrite(LED_BUILTIN, HIGH);
                     break;
 				case 1:
 				    // do sth here
+					digitalWrite(LED_BUILTIN, LOW);
                     break;
 				case 2:
 				    // do sth here
