@@ -15,7 +15,8 @@ This is simple 24h clock base on watchdog timer, the output is in *24 hour forma
       get_time      Get the current time
           Example: get_time
       set_trigger_  Set events to do, have to be specific the event's location
-          Example: set_trigger_0 15:25
+          Example: set_trigger_0 15:26
+                   set_trigger_1 15:27
       show_triggers View all events
           Example: show_triggers
       save          Save all records to EEPROM
